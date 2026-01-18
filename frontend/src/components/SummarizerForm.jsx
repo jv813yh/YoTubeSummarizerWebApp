@@ -3,18 +3,16 @@ import { motion } from 'framer-motion'
 import { Youtube, Wand2, Check } from 'lucide-react'
 import { MARKDOWN_STYLES, LANGUAGES } from '@/lib/constants'
 import { cn } from '@/lib/utils'
-
 export function SummarizerForm({ onSummarize, isLoading }) {
     const [url, setUrl] = useState('')
+    const [email, setEmail] = useState('')
     const [selectedStyle, setSelectedStyle] = useState(MARKDOWN_STYLES[0].id)
     const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGES[0].id)
-
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!url) return
-        onSummarize({ url, style: selectedStyle, language: selectedLanguage })
+        onSummarize({ url, style: selectedStyle, language: selectedLanguage, email })
     }
-
     return (
         <div className="w-full max-w-3xl mx-auto">
             <form onSubmit={handleSubmit} className="space-y-8">
@@ -32,7 +30,17 @@ export function SummarizerForm({ onSummarize, isLoading }) {
                         disabled={isLoading}
                     />
                 </div>
-
+                {/* Email Input */}
+                <div className="relative group">
+                    <input
+                        type="email"
+                        placeholder="Send summary to email (Optional)..."
+                        className="w-full px-6 py-4 bg-white/40 backdrop-blur-xl border border-white/20 rounded-xl text-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all text-slate-700 placeholder:text-slate-400"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        disabled={isLoading}
+                    />
+                </div>
                 {/* Options Grid */}
                 <div className="grid md:grid-cols-2 gap-6">
                     {/* Style Selector */}
@@ -64,7 +72,6 @@ export function SummarizerForm({ onSummarize, isLoading }) {
                             ))}
                         </div>
                     </div>
-
                     {/* Language Selector */}
                     <div className="space-y-3">
                         <label className="text-sm font-semibold text-slate-500 uppercase tracking-wider ml-1">Target Language</label>
@@ -87,7 +94,6 @@ export function SummarizerForm({ onSummarize, isLoading }) {
                         </div>
                     </div>
                 </div>
-
                 {/* Action Button */}
                 <div className="flex justify-center pt-4">
                     <button
@@ -108,7 +114,7 @@ export function SummarizerForm({ onSummarize, isLoading }) {
                         )}
                     </button>
                 </div>
-            </form>
-        </div>
+            </form >
+        </div >
     )
 }
