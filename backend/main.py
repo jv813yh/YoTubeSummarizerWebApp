@@ -7,7 +7,9 @@ import os
 import re
 from dotenv import load_dotenv
 load_dotenv()
-app = FastAPI(title="VendyGo Tools API")
+
+app = FastAPI()
+
 # CORS setup
 app.add_middleware(
     CORSMiddleware,

@@ -1,6 +1,6 @@
 > A premium, AI-powered YouTube video summarizer web application.
 
-![VendyGo Tools Banner](https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2600&auto=format&fit=crop&ixlib=rb-4.0.3)
+![VendyGo Tools Banner](assets/banner.png)
 
 transforms long YouTube videos into concise, structured summaries using advanced AI. Built with a focus on aesthetics and user experience, it features a glassmorphism UI, smooth animations, and robust transcript handling.
 
